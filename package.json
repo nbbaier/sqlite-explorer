@@ -1,0 +1,15 @@
+{
+  "name": "sqlite-explorer",
+  "module": "./src/index.tsx",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.5.0",
+    "hono": "^4.0.3"
+  }
+}

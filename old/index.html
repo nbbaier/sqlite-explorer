@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <style>
+      .sidebar-layout {
+        display: flex;
+      }
+      .sidebar {
+        flex-basis: 15rem;
+        flex-grow: 1;
+        border-right: 1px solid black;
+        padding: 10px;
+      }
+      .content-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+      }
+      .content-container .content-wrapper {
+        position: relative;
+        flex-grow: 1;
+        resize: vertical;
+      }
+      .content-wrapper > div:not(.resize-handle) {
+        padding: 10px;
+      }
+
+      .content-container .resize-handle {
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        cursor: ns-resize;
+        background: #666;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="sidebar-layout">
+      <header class="sidebar">a</header>
+      <div class="content-container">
+        <div class="content-wrapper">
+          <div>b</div>
+          <div class="resize-handle"></div>
+          <div>c</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const handle = document.querySelector(".resize-handle");
+        const wrapper = document.querySelector(".content-wrapper");
+        let isResizing = false;
+        let startingHeight;
+        let startY;
+
+        handle.addEventListener("mousedown", function (e) {
+          isResizing = true;
+          startingHeight = parseFloat(getComputedStyle(wrapper).height);
+          startY = e.clientY;
+        });
+
+        document.addEventListener("mousemove", function (e) {
+          if (!isResizing) return;
+
+          const currentY = e.clientY;
+          const newHeight = startingHeight + (currentY - startY);
+          wrapper.style.height = newHeight + "px";
+        });
+
+        document.addEventListener("mouseup", function () {
+          isResizing = false;
+          startingHeight = null;
+          startY = null;
+        });
+      });
+    </script>
+  </body>
+</html>

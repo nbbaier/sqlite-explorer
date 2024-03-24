@@ -1,0 +1,142 @@
+:root {
+  --main-font: "Source Sans 3", "Source Sans Pro", -apple-system, system-ui,
+    sans-serif;
+  --rhythm: 1.4rem; /* Vertical rhythm, line height. */
+  --bg: var(--gray-0); /* Page background. */
+  --fg: var(--gray-12); /* Text. */
+  --gray-5: #b1b6b9;
+  --gray-12: #121210;
+  --density: 1;
+  --font-size: 1rem;
+}
+
+table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+tfoot,
+thead {
+  text-align: left;
+}
+
+tbody {
+  border-block: 1px solid var(--gray-12);
+}
+
+* {
+  --gap: calc(var(--rhythm) * var(--density));
+}
+
+html {
+  font-family: var(--main-font);
+  line-height: var(--rhythm);
+
+  background: var(--bg);
+  color: var(--fg);
+  scroll-padding-block-start: calc(4 * var(--gap));
+}
+
+ul {
+  list-style: none;
+  margin-block: var(--gap);
+  margin-bottom: 0;
+  padding: 0;
+}
+
+header.sidebar li {
+  margin-block: calc(0.5 * var(--gap));
+  display: flex;
+  align-items: center;
+  & a {
+    text-decoration: none;
+  }
+  & svg {
+    margin-right: 8px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex-basis: 15rem;
+  flex-grow: 1;
+  border-right: 1px solid black;
+  padding: var(--gap);
+}
+
+.sidebar > h1 {
+  margin-top: 0;
+}
+
+.not-sidebar {
+  flex-basis: 0;
+  flex-grow: 999;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.intermediate-container {
+  flex-grow: 1;
+  position: relative;
+}
+
+.not-sidebar > div {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.not-sidebar > div:not(.button-container) {
+  border-bottom: 1px solid black;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.not-sidebar > div:last-child {
+  border-bottom: none; /* Remove the border from the last div to avoid a double line */
+}
+
+.not-sidebar > div:last-child {
+  border-bottom: none; /* Remove the border from the last div to avoid a double line */
+}
+
+.not-sidebar > div:first-child {
+  padding-top: var(--gap);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.svg {
+  line-height: 1;
+}
+
+.button-container {
+  display: flex;
+  flex-grow: 0;
+  align-items: center; /* Align button vertically */
+  gap: 0.25rem; /* Set the desired gap between button and container */
+  & button {
+    text-transform: uppercase;
+    display: flex;
+    margin-inline: 0.5rem;
+    align-items: center;
+
+    & svg {
+      margin-right: 0.25rem;
+    }
+  }
+}
